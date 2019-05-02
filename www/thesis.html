@@ -1,0 +1,116 @@
+<html>
+<head><meta http-equiv=Content-Type content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+span.cls_002{font-family:Times,serif;font-size:22.1px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+div.cls_002{font-family:Times,serif;font-size:22.1px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+span.cls_003{font-family:Times,serif;font-size:15.1px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+div.cls_003{font-family:Times,serif;font-size:15.1px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+span.cls_004{font-family:Times,serif;font-size:11.1px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+div.cls_004{font-family:Times,serif;font-size:11.1px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+span.cls_005{font-family:Times,serif;font-size:10.1px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+div.cls_005{font-family:Times,serif;font-size:10.1px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+span.cls_006{font-family:Times,serif;font-size:10.1px;color:rgb(0,0,0);font-weight:normal;font-style:italic;text-decoration: none}
+div.cls_006{font-family:Times,serif;font-size:10.1px;color:rgb(0,0,0);font-weight:normal;font-style:italic;text-decoration: none}
+span.cls_007{font-family:Times,serif;font-size:10.1px;color:rgb(0,0,0);font-weight:bold;font-style:normal;text-decoration: none}
+div.cls_007{font-family:Times,serif;font-size:10.1px;color:rgb(0,0,0);font-weight:bold;font-style:normal;text-decoration: none}
+span.cls_008{font-family:Times,serif;font-size:11.1px;color:rgb(0,0,0);font-weight:normal;font-style:italic;text-decoration: none}
+div.cls_008{font-family:Times,serif;font-size:11.1px;color:rgb(0,0,0);font-weight:normal;font-style:italic;text-decoration: none}
+span.cls_009{font-family:Times,serif;font-size:11.1px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: line-through}
+div.cls_009{font-family:Times,serif;font-size:11.1px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+-->
+</style>
+<script type="text/javascript" src="wz_jsgraphics.js"></script>
+</head>
+<body>
+<div style="position:absolute;left:50%;margin-left:-297px;top:0px;width:595px;height:841px;border-style:outset;overflow:hidden">
+<div style="position:absolute;left:100.32px;top:148.64px" class="cls_002"><span class="cls_002">Chapter 4</span></div>
+<div style="position:absolute;left:99.84px;top:198.32px" class="cls_002"><span class="cls_002">Application in Image</span></div>
+<div style="position:absolute;left:100.32px;top:228.32px" class="cls_002"><span class="cls_002">Segmentation</span></div>
+<div style="position:absolute;left:99.36px;top:297.24px" class="cls_003"><span class="cls_003">4.1</span></div>
+<div style="position:absolute;left:142.08px;top:297.24px" class="cls_003"><span class="cls_003">Introduction</span></div>
+<div style="position:absolute;left:99.36px;top:328.84px" class="cls_004"><span class="cls_004">Image segmentation is a field within computer vision which seeks to auto-</span></div>
+<div style="position:absolute;left:99.36px;top:343.24px" class="cls_004"><span class="cls_004">matically separate objects within an image similarly to how the human visual</span></div>
+<div style="position:absolute;left:99.36px;top:357.88px" class="cls_004"><span class="cls_004">system does(Ballard and Brown, 1982). There are two main types of images,</span></div>
+<div style="position:absolute;left:99.36px;top:372.28px" class="cls_004"><span class="cls_004">colour and grayscale.  For grayscale images, computers identify each pixel</span></div>
+<div style="position:absolute;left:99.12px;top:386.68px" class="cls_004"><span class="cls_004">within an image by a single continuous number over a [0,</span></div>
+<div style="position:absolute;left:409.20px;top:386.68px" class="cls_004"><span class="cls_004">1] range indicat-</span></div>
+<div style="position:absolute;left:99.36px;top:401.08px" class="cls_004"><span class="cls_004">ing brightness. Similarly, colour image pixels are represented by a measure of</span></div>
+<div style="position:absolute;left:99.36px;top:415.48px" class="cls_004"><span class="cls_004">brightness for each colour channel (RGB colour space: red, green, and blue or</span></div>
+<div style="position:absolute;left:99.60px;top:430.12px" class="cls_004"><span class="cls_004">CMYK colour space: cyan, magenta, yellow and black) by 8-bit integers over</span></div>
+<div style="position:absolute;left:99.36px;top:444.52px" class="cls_004"><span class="cls_004">a [0,</span></div>
+<div style="position:absolute;left:125.04px;top:444.52px" class="cls_004"><span class="cls_004">255] range. Pixel colour intensities can also be represented as continuous</span></div>
+<div style="position:absolute;left:99.12px;top:458.92px" class="cls_004"><span class="cls_004">value over [0, </span><span class="cls_005">1] </span><span class="cls_004">range as well. Pixels represented by zeros appear in a picture</span></div>
+<div style="position:absolute;left:99.36px;top:473.32px" class="cls_004"><span class="cls_004">as black and values of ones (255 in 8-bit) as white. Clustering algorithms utilise</span></div>
+<div style="position:absolute;left:99.36px;top:487.96px" class="cls_004"><span class="cls_004">relational structures based on pixel intensities to separate objects within an</span></div>
+<div style="position:absolute;left:99.36px;top:502.36px" class="cls_004"><span class="cls_004">image. Preprocessing tools can assist with defining these relationships within</span></div>
+<div style="position:absolute;left:99.36px;top:516.76px" class="cls_004"><span class="cls_004">an image.</span></div>
+<div style="position:absolute;left:116.88px;top:531.16px" class="cls_004"><span class="cls_004">Before an image can be analysed, each pixel location must be indexed so</span></div>
+<div style="position:absolute;left:99.36px;top:545.80px" class="cls_004"><span class="cls_004">as to retain image structure liken to the human eye.  When images are of</span></div>
+<div style="position:absolute;left:99.36px;top:559.96px" class="cls_004"><span class="cls_004">high quality, containing many pixels, sampling is suggested in order to reduce</span></div>
+<div style="position:absolute;left:99.36px;top:574.60px" class="cls_004"><span class="cls_004">computational expense. Sampling pixels can avoid overfitting a solution and</span></div>
+<div style="position:absolute;left:99.36px;top:589.00px" class="cls_004"><span class="cls_004">produce better final results. Once image data is indexed and possibly sampled,</span></div>
+<div style="position:absolute;left:99.12px;top:603.40px" class="cls_004"><span class="cls_004">further processing may enhance the image segmentation.</span></div>
+<div style="position:absolute;left:117.12px;top:617.80px" class="cls_004"><span class="cls_004">Minimum density hyperplane (MDH) segments an image by associating</span></div>
+<div style="position:absolute;left:99.36px;top:632.20px" class="cls_004"><span class="cls_004">distinct clusters based on observed densities.  The solution plane minimises</span></div>
+<div style="position:absolute;left:99.12px;top:646.60px" class="cls_004"><span class="cls_004">the integrated density. This amounts to segmenting dense regions of pixel in-</span></div>
+<div style="position:absolute;left:99.12px;top:661.24px" class="cls_004"><span class="cls_004">tensities within an image. Consider a hypothetical scenario in which a picture</span></div>
+<div style="position:absolute;left:99.36px;top:675.64px" class="cls_004"><span class="cls_004">consists of a circle filled in with red</span></div>
+<div style="position:absolute;left:290.16px;top:675.64px" class="cls_004"><span class="cls_004">(focal object) ontop a blue background.</span></div>
+<div style="position:absolute;left:99.36px;top:690.04px" class="cls_004"><span class="cls_004">Furthermore, this image consists of 10 000 pixels,</span></div>
+<div style="position:absolute;left:359.76px;top:690.28px" class="cls_004"><span class="cls_004">2 000 representing the red</span></div>
+<div style="position:absolute;left:294.48px;top:732.32px" class="cls_005"><span class="cls_005">8</span></div>
+</div>
+<div style="position:absolute;left:50%;margin-left:-297px;top:851px;width:595px;height:841px;border-style:outset;overflow:hidden">
+<div style="position:absolute;left:100.08px;top:44.96px" class="cls_006"><span class="cls_006">CHAPTER 4.  APPLICATION IN IMAGE SEGMENTATION</span></div>
+<div style="position:absolute;left:489.36px;top:44.96px" class="cls_007"><span class="cls_007">9</span></div>
+<div style="position:absolute;left:99.36px;top:80.20px" class="cls_004"><span class="cls_004">circle and 8 000 associated with blue background. MDH can be seen as essen-</span></div>
+<div style="position:absolute;left:99.12px;top:94.60px" class="cls_004"><span class="cls_004">tially binning these observed values</span></div>
+<div style="position:absolute;left:289.44px;top:94.60px" class="cls_004"><span class="cls_004">(similar to a histogram) and separating</span></div>
+<div style="position:absolute;left:99.12px;top:109.00px" class="cls_004"><span class="cls_004">them by seeking the lowest point between each bin.  More accurately, MDH</span></div>
+<div style="position:absolute;left:99.36px;top:123.40px" class="cls_004"><span class="cls_004">seeks a point along an contiguous empirical probability density which min-</span></div>
+<div style="position:absolute;left:99.36px;top:137.80px" class="cls_004"><span class="cls_004">imises integrated density (Hofmeyr </span><span class="cls_006">et al., </span><span class="cls_004">2016). In this hypothetical scenario,</span></div>
+<div style="position:absolute;left:99.12px;top:152.20px" class="cls_004"><span class="cls_004">the minimised point between observed red and blue values would success-</span></div>
+<div style="position:absolute;left:99.12px;top:166.60px" class="cls_004"><span class="cls_004">fully segment foreground from background. This concept is further explored</span></div>
+<div style="position:absolute;left:99.12px;top:181.24px" class="cls_004"><span class="cls_004">throughout of this chapter using actual images.</span></div>
+<div style="position:absolute;left:116.88px;top:195.64px" class="cls_004"><span class="cls_004">The remainder of this chapter is as follows:  A simple decorrelation and</span></div>
+<div style="position:absolute;left:99.36px;top:210.04px" class="cls_004"><span class="cls_004">stretching algorithm is presented as an image preprocessing tool. This is fol-</span></div>
+<div style="position:absolute;left:99.36px;top:224.44px" class="cls_004"><span class="cls_004">lowed by MDH clustering of a non- and DCS-processed image. Building on the</span></div>
+<div style="position:absolute;left:99.60px;top:238.84px" class="cls_004"><span class="cls_004">MDH solution, mean shift is applied to a region of points around the separat-</span></div>
+<div style="position:absolute;left:99.36px;top:253.48px" class="cls_004"><span class="cls_004">ing plane and compared to a heuristic single step kernel derivative approach</span></div>
+<div style="position:absolute;left:100.08px;top:267.88px" class="cls_004"><span class="cls_004">(MDHr), as introduced in Chapter 3.  Interested parties can explore results</span></div>
+<div style="position:absolute;left:99.36px;top:282.28px" class="cls_004"><span class="cls_004">contained herein and further evaluate 3-dimensional scatter plots interactively</span></div>
+<div style="position:absolute;left:99.36px;top:296.68px" class="cls_004"><span class="cls_004">online at </span><A HREF="https://jacobbradleykenyon./">https://jacobbradleykenyon.</A> shiny apps io / Ch4  Enhanced  MDH. </span><span class="cls_004">This</span></div>
+<div style="position:absolute;left:99.36px;top:311.08px" class="cls_004"><span class="cls_004">chapter concludes by comparing K-means, iterSVM, MDH, and MDH r on a</span></div>
+<div style="position:absolute;left:99.36px;top:325.72px" class="cls_004"><span class="cls_004">set images from the Berkeley Segmentation Dataset (Martin </span><span class="cls_006">et al., </span><span class="cls_004">2001).</span></div>
+<div style="position:absolute;left:99.36px;top:361.56px" class="cls_003"><span class="cls_003">4.2</span></div>
+<div style="position:absolute;left:142.08px;top:361.56px" class="cls_003"><span class="cls_003">Pre-processing Images</span></div>
+<div style="position:absolute;left:99.36px;top:393.16px" class="cls_004"><span class="cls_004">There is a plethora of image possessing techniques available; vector mode fil-</span></div>
+<div style="position:absolute;left:99.12px;top:407.80px" class="cls_004"><span class="cls_004">ters, dilation and erosion operators, and contrast adjustments, to name a few</span></div>
+<div style="position:absolute;left:100.08px;top:422.20px" class="cls_004"><span class="cls_004">(Davies,</span></div>
+<div style="position:absolute;left:144.96px;top:422.20px" class="cls_004"><span class="cls_004">2012). When considering minimum density hyperplane (MDH) clus-</span></div>
+<div style="position:absolute;left:99.12px;top:436.60px" class="cls_004"><span class="cls_004">tering, focus is on methods which optimally disperse pixel intensities in such</span></div>
+<div style="position:absolute;left:99.36px;top:451.24px" class="cls_004"><span class="cls_004">a way as to assist in defining a low density separating plane.</span></div>
+<div style="position:absolute;left:116.88px;top:465.40px" class="cls_004"><span class="cls_004">Decorrelation enhances the colour differences amongst pixels.  Principal</span></div>
+<div style="position:absolute;left:99.36px;top:480.04px" class="cls_004"><span class="cls_004">component transformation provides a straight forward method to remove cor-</span></div>
+<div style="position:absolute;left:99.36px;top:494.44px" class="cls_004"><span class="cls_004">relation within an image (Alley,</span></div>
+<div style="position:absolute;left:269.04px;top:494.44px" class="cls_004"><span class="cls_004">1996). The data matrix ( </span><span class="cls_008">X) </span><span class="cls_004">is transformed</span></div>
+<div style="position:absolute;left:99.12px;top:508.84px" class="cls_004"><span class="cls_004">via normalised eigenvectors(U) derived from the covariance </span><span class="cls_008">(S) </span><span class="cls_004">eigendecom-</span></div>
+<div style="position:absolute;left:99.36px;top:523.48px" class="cls_004"><span class="cls_004">position. Once the data is decorrelated(X*), colour channels can be stretched.</span></div>
+<div style="position:absolute;left:268.56px;top:564.28px" class="cls_008"><span class="cls_008">S </span><span class="cls_009">=</span><span class="cls_004"> </span><span class="cls_008">UDUT</span></div>
+<div style="position:absolute;left:463.68px;top:564.04px" class="cls_004"><span class="cls_004">(4.2.1)</span></div>
+<div style="position:absolute;left:259.44px;top:581.56px" class="cls_004"><span class="cls_004">X* </span><span class="cls_009">=</span><span class="cls_004"> </span><span class="cls_008">XU</span></div>
+<div style="position:absolute;left:463.68px;top:581.56px" class="cls_004"><span class="cls_004">(4.2.2)</span></div>
+<div style="position:absolute;left:116.88px;top:607.96px" class="cls_004"><span class="cls_004">Pixel RGB channels are stretched to increase contrast within the image.</span></div>
+<div style="position:absolute;left:99.36px;top:622.60px" class="cls_004"><span class="cls_004">Increasing contrast heightens borders of objects within the image.  Contrast</span></div>
+<div style="position:absolute;left:99.36px;top:637.00px" class="cls_004"><span class="cls_004">stretching, amounts to rescaling pixel values to enforce an observed range</span></div>
+<div style="position:absolute;left:99.12px;top:651.40px" class="cls_004"><span class="cls_004">which spans all possible values</span></div>
+<div style="position:absolute;left:262.32px;top:651.40px" class="cls_004"><span class="cls_004">(Davies,</span></div>
+<div style="position:absolute;left:307.44px;top:651.40px" class="cls_004"><span class="cls_004">2012). Equation 4.2.3 illustrates the</span></div>
+<div style="position:absolute;left:99.36px;top:665.80px" class="cls_004"><span class="cls_004">process of transforming each decorrelated pixel value</span></div>
+<div style="position:absolute;left:386.16px;top:665.80px" class="cls_008"><span class="cls_008">(4) </span><span class="cls_004">within a colour</span></div>
+<div style="position:absolute;left:99.36px;top:680.20px" class="cls_004"><span class="cls_004">channel dependent on a desired range </span><span class="cls_008">(xi), </span><span class="cls_004">255 for 8-bit RGB encoded images.</span></div>
+</div>
+
+</body>
+</html>
