@@ -1,5 +1,7 @@
-# hyper-planes-in-images
+# Hyper planes in images
 Minimum density hyper planes utilised for image segmentation.
+
+# Web application 
 
 This application allows one to interactly segment images using hyperplanes.  One can either manually select a decision rule by selecting a position on the density or automatically using projection pursuit in accordance of obtaining a minimum density hyperplane solution.
 
